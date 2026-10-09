@@ -1,0 +1,9 @@
+const abetech = {
+  name: "AbeTech123",
+  teaches: ["HTML", "CSS", "JS", "Python"],
+  fixes:   ["Computers", "Phones"],
+  builds:  "the future"
+};
+
+// Let's build something.
+start(abetech);
