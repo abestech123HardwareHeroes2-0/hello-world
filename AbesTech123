@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AbeTech123 | Coding • Computers • Phones • Digital Technology</title>
+<meta name="description" content="AbeTech123: learn coding, explore computers and phones, build digital projects, and discover practical technology solutions.">
+<style>
+:root{
+  --bg:#0b0f1a; --bg2:#111827; --card:#151c2e; --line:#243049;
+  --text:#e8edf7; --muted:#97a3bd; --accent:#22d3ee; --accent2:#8b5cf6; --ok:#25d366;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+.container{width:min(1140px,92%);margin-inline:auto}
+section{padding:90px 0}
+.section-head{text-align:center;max-width:680px;margin:0 auto 48px}
+.eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;font-size:.8rem;text-transform:uppercase}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin:8px 0 12px;line-height:1.2}
+.section-head p{color:var(--muted)}
+.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* Nav */
+header{position:fixed;inset:0 0 auto 0;z-index:50;background:rgba(11,15,26,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{font-weight:800;font-size:1.35rem;letter-spacing:-.02em}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:22px;list-style:none}
+nav a{color:var(--muted);font-size:.93rem;font-weight:500;transition:.2s}
+nav a:hover,nav a.active{color:var(--accent)}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 26px;border-radius:999px;font-weight:600;border:1px solid transparent;cursor:pointer;transition:.25s;font-size:1rem}
+.btn-primary{background:linear-gradient(90deg,var(--accent),var(--accent2));color:#06101c}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(34,211,238,.25)}
+.btn-ghost{border-color:var(--line);color:var(--text);background:transparent}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:110px;position:relative;
+  background:radial-gradient(800px 400px at 80% 10%,rgba(139,92,246,.22),transparent),
+             radial-gradient(700px 400px at 10% 90%,rgba(34,211,238,.16),transparent),var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.tag{display:inline-block;border:1px solid var(--line);background:var(--bg2);padding:6px 14px;border-radius:999px;font-size:.85rem;color:var(--muted);margin-bottom:20px}
+.hero h1{font-size:clamp(2.6rem,7vw,4.6rem);line-height:1.05;letter-spacing:-.03em}
+.hero h2.sub{font-size:clamp(1.1rem,2.4vw,1.5rem);font-weight:600;margin:16px 0;color:var(--text)}
+.hero p{color:var(--muted);max-width:540px;margin-bottom:30px}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.code-card{background:#0a1020;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 30px 80px rgba(0,0,0,.5);overflow:hidden;animation:float 6s ease-in-out infinite}
+.code-top{display:flex;gap:7px;padding:12px 16px;background:var(--bg2);border-bottom:1px solid var(--line)}
+.code-top i{width:12px;height:12px;border-radius:50%;background:#ff5f57}
+.code-top i:nth-child(2){background:#febc2e}.code-top i:nth-child(3){background:#28c840}
+.code-card pre{padding:22px;font-family:"Fira Code",Consolas,monospace;font-size:.88rem;color:#c9d6f2;overflow-x:auto;min-height:230px}
+.k{color:#c792ea}.s{color:#a5e075}.f{color:#5ccfe6}.c{color:#5c6a8a}
+.cursor{display:inline-block;width:8px;height:1em;background:var(--accent);vertical-align:-2px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* Cards */
+.grid{display:grid;gap:22px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:.3s}
+.card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 18px 40px rgba(0,0,0,.35)}
+.icon{font-size:2rem;margin-bottom:14px}
+.card h3{font-size:1.15rem;margin-bottom:8px}
+.card p{color:var(--muted);font-size:.95rem}
+.alt{background:var(--bg2)}
+.list{list-style:none;margin-top:14px}
+.list li{color:var(--muted);font-size:.93rem;padding:5px 0 5px 22px;position:relative}
+.list li::before{content:"▹";position:absolute;left:0;color:var(--accent)}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.about p{color:var(--muted);margin-bottom:16px}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px;text-align:center}
+.stat b{display:block;font-size:2rem}
+
+/* Gallery */
+.filters{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:30px}
+.filters button{background:var(--card);border:1px solid var(--line);color:var(--muted);padding:8px 18px;border-radius:999px;cursor:pointer;font-size:.9rem;transition:.2s}
+.filters button.on,.filters button:hover{border-color:var(--accent);color:var(--accent)}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.shot{aspect-ratio:4/3;border-radius:14px;border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;cursor:pointer;position:relative;overflow:hidden;transition:.3s;font-size:2.4rem}
+.shot span{font-size:.85rem;color:rgba(255,255,255,.85);font-weight:600}
+.shot:hover{transform:scale(1.03);border-color:var(--accent)}
+.shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.shot.hide{display:none}
+.g-code{background:linear-gradient(135deg,#1e3a8a,#0e7490)}
+.g-pc{background:linear-gradient(135deg,#4c1d95,#1d4ed8)}
+.g-phone{background:linear-gradient(135deg,#9d174d,#6d28d9)}
+.g-repair{background:linear-gradient(135deg,#9a3412,#be185d)}
+.g-proj{background:linear-gradient(135deg,#065f46,#0e7490)}
+.note{text-align:center;color:var(--muted);font-size:.85rem;margin-top:22px}
+
+/* Videos */
+.video{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.3s;cursor:pointer}
+.video:hover{transform:translateY(-6px);border-color:var(--accent)}
+.thumb{aspect-ratio:16/9;display:grid;place-items:center;background:linear-gradient(135deg,#111a33,#1e1b4b);position:relative}
+.play{width:62px;height:62px;border-radius:50%;background:linear-gradient(90deg,var(--accent),var(--accent2));display:grid;place-items:center;color:#06101c;font-size:1.4rem;padding-left:4px;transition:.25s}
+.video:hover .play{transform:scale(1.12)}
+.video .meta{padding:18px 20px}
+.video h3{font-size:1.05rem;margin-bottom:4px}
+.video p{color:var(--muted);font-size:.9rem}
+.modal{position:fixed;inset:0;background:rgba(3,6,12,.88);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}
+.modal.open{display:flex}
+.modal-box{width:min(900px,100%);background:var(--bg2);border:1px solid var(--line);border-radius:var(--radius);padding:18px;position:relative}
+.modal-box iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:10px}
+.modal-box .empty{aspect-ratio:16/9;display:grid;place-items:center;text-align:center;color:var(--muted);padding:20px}
+.close{position:absolute;top:-14px;right:-14px;width:36px;height:36px;border-radius:50%;border:0;background:var(--accent);color:#06101c;font-size:1.1rem;font-weight:700;cursor:pointer}
+
+/* Contact */
+.contact{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.c-links{display:grid;gap:14px;align-content:start}
+.c-link{display:flex;align-items:center;gap:16px;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:18px 22px;transition:.25s}
+.c-link:hover{border-color:var(--accent);transform:translateX(6px)}
+.c-link .ico{font-size:1.6rem}
+.c-link small{display:block;color:var(--muted)}
+.wa{background:var(--ok);color:#052e16;font-weight:700;border-color:var(--ok)}
+form{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:grid;gap:14px}
+input,textarea,select{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--text);padding:13px 16px;border-radius:10px;font:inherit}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--accent)}
+textarea{min-height:120px;resize:vertical}
+
+footer{border-top:1px solid var(--line);padding:30px 0;text-align:center;color:var(--muted);font-size:.9rem}
+.wa-float{position:fixed;right:20px;bottom:20px;z-index:60;width:58px;height:58px;border-radius:50%;background:var(--ok);display:grid;place-items:center;font-size:1.7rem;box-shadow:0 10px 30px rgba(0,0,0,.4);transition:.25s}
+.wa-float:hover{transform:scale(1.1)}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s,transform .7s}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .hero-grid,.about,.contact{grid-template-columns:1fr}
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .burger{display:block}
+  nav{position:absolute;top:68px;left:0;right:0;background:var(--bg2);border-bottom:1px solid var(--line);display:none}
+  nav.open{display:block}
+  nav ul{flex-direction:column;gap:0;padding:10px 4%}
+  nav li a{display:block;padding:12px 0}
+}
+@media(max-width:560px){
+  section{padding:70px 0}
+  .g3,.g4{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#home" class="logo">Abe<span>Tech</span>123</a>
+    <button class="burger" id="burger" aria-label="Toggle menu">☰</button>
+    <nav id="menu">
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#coding">Coding</a></li>
+        <li><a href="#computers">Computers</a></li>
+        <li><a href="#phones">Phones</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <span class="tag">Coding • Computers • Phones • Digital Technology</span>
+      <h1 class="grad">AbeTech123</h1>
+      <h2 class="sub">Building Skills. Solving Technology Problems. Creating the Future.</h2>
+      <p>Learn coding, explore computers and phones, build digital projects, and discover practical technology solutions.</p>
+      <div class="cta">
+        <a href="#coding" class="btn btn-primary">Explore Programs</a>
+        <a href="#computers" class="btn btn-ghost">Our Services</a>
+      </div>
+    </div>
+    <div class="code-card" aria-hidden="true">
+      <div class="code-top"><i></i><i></i><i></i></div>
+<pre id="typed"></pre>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="alt" id="about">
+  <div class="container about">
+    <div class="reveal">
+      <span class="eyebrow">About AbeTech123</span>
+      <h2>Technology that is <span class="grad">practical</span> and within reach</h2>
+      <p>AbeTech123 is a technology brand focused on teaching real skills and fixing real problems. From your first line of code to repairing a laptop or phone, we keep things hands-on and easy to follow.</p>
+      <p>We bring together education, repair, and building so that learners and customers get solutions that work in everyday life.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><span class="icon">🎓</span><b>Technology Education</b><small>Clear, step-by-step learning</small></div>
+      <div class="stat"><span class="icon">💻</span><b>Practical Coding</b><small>Learn by building</small></div>
+      <div class="stat"><span class="icon">📱</span><b>Computers &amp; Phones</b><small>Support and know-how</small></div>
+      <div class="stat"><span class="icon">⚙️</span><b>Hardware &amp; Software</b><small>Innovation and fixes</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- CODING -->
+<section id="coding">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Coding Programs</span>
+      <h2>Learn to code, <span class="grad">build for real</span></h2>
+      <p>Programs for beginners and beyond, built around practical projects.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><div class="icon">🌐</div><h3>Web Development</h3><p>Build complete, responsive websites from scratch and put them online.</p></div>
+      <div class="card reveal"><div class="icon">🎨</div><h3>HTML &amp; CSS</h3><p>Structure and style pages with modern layouts, flexbox, and grid.</p></div>
+      <div class="card reveal"><div class="icon">⚡</div><h3>JavaScript</h3><p>Add interactivity: menus, forms, games, and dynamic content.</p></div>
+      <div class="card reveal"><div class="icon">🐍</div><h3>Python</h3><p>Automation, scripts, and problem solving with a beginner-friendly language.</p></div>
+      <div class="card reveal"><div class="icon">🧠</div><h3>Programming Fundamentals</h3><p>Variables, logic, loops, functions, and how to think like a programmer.</p></div>
+      <div class="card reveal"><div class="icon">🛠️</div><h3>Practical Projects</h3><p>Portfolio-ready projects that prove your skills.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPUTERS -->
+<section class="alt" id="computers">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Computers</span>
+      <h2>Computer <span class="grad">services &amp; know-how</span></h2>
+      <p>Keep your laptop or desktop fast, healthy, and reliable.</p>
+    </div>
+    <div class="grid g3">
+      <div class="card reveal"><div class="icon">💻</div><h3>Laptop &amp; Computer Info</h3><p>Guidance on choosing, comparing, and understanding computers.</p></div>
+      <div class="card reveal"><div class="icon">🔍</div><h3>Hardware Diagnostics</h3><p>Find the real cause: storage, RAM, battery, cooling, and more.</p></div>
+      <div class="card reveal"><div class="icon">🔧</div><h3>Repairs</h3><p>Screens, keyboards, power issues, and component replacement.</p></div>
+      <div class="card reveal"><div class="icon">💿</div><h3>Software Installation</h3><p>Operating systems, drivers, and the tools you need.</p></div>
+      <div class="card reveal"><div class="icon">🚀</div><h3>Upgrades</h3><p>SSD, RAM, and other upgrades for a noticeable speed boost.</p></div>
+      <div class="card reveal"><div class="icon">🧹</div><h3>Maintenance</h3><p>Cleaning, updates, and tune-ups to extend your device's life.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHONES -->
+<section id="phones">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Phones</span>
+      <h2>Smartphone <span class="grad">tech &amp; support</span></h2>
+      <p>Understand your phone and get it working at its best.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card reveal"><div class="icon">📱</div><h3>Smartphone Technology</h3><p>Features, specs, and tips explained simply.</p></div>
+      <div class="card reveal"><div class="icon">🔩</div><h3>Hardware Troubleshooting</h3><p>Screens, batteries, charging ports, and more.</p></div>
+      <div class="card reveal"><div class="icon">⚙️</div><h3>Software Support</h3><p>Updates, settings, apps, and performance fixes.</p></div>
+      <div class="card reveal"><div class="icon">🎧</div><h3>Accessories</h3><p>Cases, chargers, cables, and audio gear.</p></div>
+    </div>
+    <div class="card reveal" style="margin-top:22px;text-align:center"><h3>Phone Maintenance</h3><p>Keep your phone healthy with regular cleaning, battery care, storage tidy-ups, and security checks.</p></div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="alt" id="gallery">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Gallery</span>
+      <h2>Our work in <span class="grad">pictures</span></h2>
+      <p>Coding projects, components, phones, and workshop moments.</p>
+    </div>
+    <div class="filters" id="filters">
+      <button class="on" data-f="all">All</button>
+      <button data-f="code">Coding</button>
+      <button data-f="pc">Computers</button>
+      <button data-f="phone">Phones</button>
+      <button data-f="repair">Workshop</button>
+      <button data-f="proj">Projects</button>
+    </div>
+    <div class="gallery" id="gallery-grid">
+      <!-- To use your own photo, add: <img src="images/your-photo.jpg" alt="..."> inside a .shot -->
+      <div class="shot g-code" data-c="code">🖥️<span>Coding Project</span></div>
+      <div class="shot g-pc" data-c="pc">💻<span>Laptop Build</span></div>
+      <div class="shot g-phone" data-c="phone">📱<span>Phone Showcase</span></div>
+      <div class="shot g-repair" data-c="repair">🔧<span>Repair Bench</span></div>
+      <div class="shot g-proj" data-c="proj">🚀<span>Tech Project</span></div>
+      <div class="shot g-code" data-c="code">⌨️<span>Web Design</span></div>
+      <div class="shot g-pc" data-c="pc">🧩<span>Computer Components</span></div>
+      <div class="shot g-phone" data-c="phone">🔋<span>Battery Service</span></div>
+      <div class="shot g-repair" data-c="repair">🛠️<span>Workshop</span></div>
+    </div>
+    <p class="note">Placeholders shown. Replace them with your own photos (see comment in the code).</p>
+  </div>
+</section>
+
+<!-- VIDEOS -->
+<section id="videos">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Videos</span>
+      <h2>Watch and <span class="grad">learn</span></h2>
+      <p>Tutorials, repair demos, and project walkthroughs.</p>
+    </div>
+    <div class="grid g3">
+      <!-- Set data-yt to a YouTube video ID, e.g. data-yt="dQw4w9WgXcQ" -->
+      <div class="video reveal" data-yt=""><div class="thumb"><div class="play">▶</div></div><div class="meta"><h3>Coding Tutorials</h3><p>HTML, CSS, JavaScript, and Python lessons.</p></div></div>
+      <div class="video reveal" data-yt=""><div class="thumb"><div class="play">▶</div></div><div class="meta"><h3>Computer Repair Demos</h3><p>Watch real diagnostics and repairs.</p></div></div>
+      <div class="video reveal" data-yt=""><div class="thumb"><div class="play">▶</div></div><div class="meta"><h3>Phone Technology</h3><p>Tips, troubleshooting, and reviews.</p></div></div>
+      <div class="video reveal" data-yt=""><div class="thumb"><div class="play">▶</div></div><div class="meta"><h3>Project Demonstrations</h3><p>See finished projects in action.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="alt" id="projects">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Projects</span>
+      <h2>Things we <span class="grad">build</span></h2>
+      <p>A growing collection of digital and hardware creations.</p>
+    </div>
+    <div class="grid g4">
+      <div class="card reveal"><div class="icon">🌍</div><h3>Websites</h3><ul class="list"><li>Business sites</li><li>Portfolios</li><li>Landing pages</li></ul></div>
+      <div class="card reveal"><div class="icon">📲</div><h3>Apps</h3><ul class="list"><li>Web apps</li><li>Mobile-friendly tools</li><li>Utilities</li></ul></div>
+      <div class="card reveal"><div class="icon">🔌</div><h3>Hardware Projects</h3><ul class="list"><li>Custom builds</li><li>Upgrades</li><li>Repairs &amp; mods</li></ul></div>
+      <div class="card reveal"><div class="icon">👨‍💻</div><h3>Coding Projects</h3><ul class="list"><li>Python scripts</li><li>JavaScript games</li><li>Automation</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Contact</span>
+      <h2>Let's <span class="grad">talk tech</span></h2>
+      <p>Questions about programs, repairs, or projects? Reach out.</p>
+    </div>
+    <div class="contact">
+      <div class="c-links reveal">
+        <!-- Replace the phone number (digits only, with country code) and other details below -->
+        <a class="c-link wa" href="https://wa.me/200000000000" target="_blank" rel="noopener"><span class="ico">💬</span><div>WhatsApp<small style="color:#064e2b">Chat with AbeTech123</small></div></a>
+        <a class="c-link" href="mailto:hello@abetech123.com"><span class="ico">✉️</span><div>Email<small>hello@abetech123.com</small></div></a>
+        <a class="c-link" href="#" target="_blank" rel="noopener"><span class="ico">📘</span><div>Facebook<small>@abetech123</small></div></a>
+        <a class="c-link" href="#" target="_blank" rel="noopener"><span class="ico">📸</span><div>Instagram<small>@abetech123</small></div></a>
+        <a class="c-link" href="#" target="_blank" rel="noopener"><span class="ico">▶️</span><div>YouTube<small>AbeTech123</small></div></a>
+        <div class="c-link"><span class="ico">📍</span><div>Location<small>Add your address here</small></div></div>
+      </div>
+      <form class="reveal" id="form">
+        <input type="text" id="name" placeholder="Your name" required>
+        <select id="topic">
+          <option>Coding Programs</option>
+          <option>Computer Services</option>
+          <option>Phone Services</option>
+          <option>Projects</option>
+          <option>Other</option>
+        </select>
+        <textarea id="msg" placeholder="How can we help?" required></textarea>
+        <button class="btn btn-primary" type="submit">Send via WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">© <span id="yr"></span> AbeTech123. Building Skills. Solving Technology Problems. Creating the Future.</div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/200000000000" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="close" id="mclose" aria-label="Close">✕</button>
+    <div id="mcontent"></div>
+  </div>
+</div>
+
+<script>
+// Set your WhatsApp number (digits only, with country code)
+const WHATSAPP = "200000000000";
+
+// Mobile menu
+const menu = document.getElementById('menu');
+document.getElementById('burger').onclick = () => menu.classList.toggle('open');
+menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
+
+// Active nav link
+const links = [...menu.querySelectorAll('a')];
+const secs = links.map(a => document.querySelector(a.getAttribute('href')));
+addEventListener('scroll', () => {
+  const y = scrollY + 120;
+  secs.forEach((s, i) => links[i].classList.toggle('active', s.offsetTop <= y && s.offsetTop + s.offsetHeight > y));
+}, {passive:true});
+
+// Scroll reveal
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Typing effect
+const code = `<span class="k">const</span> abetech = {
+  <span class="f">name</span>: <span class="s">"AbeTech123"</span>,
+  <span class="f">teaches</span>: [<span class="s">"HTML"</span>, <span class="s">"CSS"</span>, <span class="s">"JS"</span>, <span class="s">"Python"</span>],
+  <span class="f">fixes</span>:   [<span class="s">"Computers"</span>, <span class="s">"Phones"</span>],
+  <span class="f">builds</span>:  <span class="s">"the future"</span>
+};
+
+<span class="c">// Let's build something.</span>
+<span class="f">start</span>(abetech);`;
+const out = document.getElementById('typed');
+let i = 0, inTag = false, buf = '';
+(function type(){
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) { out.innerHTML = code; return; }
+  if (i < code.length) {
+    const ch = code[i++];
+    buf += ch;
+    if (ch === '<') inTag = true;
+    if (ch === '>') inTag = false;
+    out.innerHTML = buf + '<span class="cursor"></span>';
+    setTimeout(type, inTag ? 0 : 22);
+  } else { out.innerHTML = buf + '<span class="cursor"></span>'; }
+})();
+
+// Gallery filter
+const shots = [...document.querySelectorAll('.shot')];
+document.getElementById('filters').addEventListener('click', e => {
+  const b = e.target.closest('button'); if (!b) return;
+  document.querySelectorAll('#filters button').forEach(x => x.classList.remove('on'));
+  b.classList.add('on');
+  shots.forEach(s => s.classList.toggle('hide', b.dataset.f !== 'all' && s.dataset.c !== b.dataset.f));
+});
+
+// Modal (gallery + videos)
+const modal = document.getElementById('modal'), mc = document.getElementById('mcontent');
+const open = html => { mc.innerHTML = html; modal.classList.add('open'); };
+const close = () => { modal.classList.remove('open'); mc.innerHTML = ''; };
+document.getElementById('mclose').onclick = close;
+modal.onclick = e => { if (e.target === modal) close(); };
+addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
+
+shots.forEach(s => s.onclick = () => {
+  const img = s.querySelector('img');
+  open(img ? `<img src="${img.src}" alt="${img.alt}" style="border-radius:10px">`
+           : `<div class="empty"><div><div style="font-size:3rem">${s.firstChild.textContent}</div><p>${s.querySelector('span').textContent}<br>Add your photo here.</p></div></div>`);
+});
+document.querySelectorAll('.video').forEach(v => v.onclick = () => {
+  const id = v.dataset.yt.trim();
+  open(id ? `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(id)}?autoplay=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>`
+          : `<div class="empty"><p>Video coming soon.<br>Add a YouTube ID in the <b>data-yt</b> attribute of this card.</p></div>`);
+});
+
+// Contact form -> WhatsApp
+document.getElementById('form').onsubmit = e => {
+  e.preventDefault();
+  const t = `Hello AbeTech123, I'm ${name.value}.\nTopic: ${topic.value}\n${msg.value}`;
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t)}`, '_blank');
+};
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
